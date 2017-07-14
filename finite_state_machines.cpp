@@ -27,7 +27,7 @@ int  winWidth, winHeight; // current Window width and height
 #define RUN 2
 #define GAMEOVER 3
 
-//My global variables
+//Global variables
 int gameState = MENU;
 int dotCount = 0;
 int elapsedTime = 0;
@@ -43,8 +43,6 @@ int cx = -100, cy = -100; //current mouse position in terms of number (not pixel
 
 //For r,g,b colors
 int r = 255, g = 255, b = 255;
-
-
 
 //
 // to draw circle, center at (x,y)
@@ -65,6 +63,7 @@ void circle( int x, int y, int r )
 
 void circle_wire(int x, int y, int r)
 {
+
 #define PI 3.1415
 	float angle;
 
