@@ -1,5 +1,4 @@
 
-//#pragma comment( linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" )
 #include <GL/glut.h>
 #include <stdio.h>
 #include <stdlib.h>
