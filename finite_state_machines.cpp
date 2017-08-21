@@ -384,12 +384,7 @@ void onClick( int button, int stat, int x, int y )
 			g = rand() % 256;
 			b = rand() % 256;
 		}
-			
-		
-		
 	}
-	
-	
 	 // to refresh the window it calls display() function
 	glutPostRedisplay() ; 
 }
@@ -407,7 +402,7 @@ void onResize( int w, int h )
 	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity();
 	glOrtho( -w/2, w/2, -h/2, h/2, -1, 1);
-	glMatrixMode( GL_MODELVIEW);
+	glMatrixMode( GL_MODELVIEW );
 	glLoadIdentity();
 	display(); // refresh window.
 }
