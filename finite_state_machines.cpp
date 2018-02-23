@@ -24,8 +24,9 @@ int  winWidth, winHeight; // current Window width and height
 #define RUN 2
 #define GAMEOVER 3
 
+
 //Global variables
-int gameState = MENU;
+int gameState = GAMEOVER;
 int dotCount = 0;
 int elapsedTime = 0;
 int curMenu = 0;
@@ -40,13 +41,14 @@ int cx = -100, cy = -100; //current mouse position in terms of number (not pixel
 
 //For r,g,b colors
 int r = 255, g = 255, b = 255;
+int windowWidth = WINDOW_WIDTH;
+int windowHeight = WINDOW_HEIGHT;
 
 //
 // to draw circle, center at (x,y)
 //  radius r
 //
-void circle( int x, int y, int r )
-{
+void circle( int x, int y, int r ){
 #define PI 3.1415
 	float angle ;
     glBegin( GL_POLYGON ) ;
@@ -57,9 +59,7 @@ void circle( int x, int y, int r )
 	}
 	glEnd();
 }
-
-void circle_wire(int x, int y, int r)
-{
+void circle_wire(int x, int y, int r){
 
 #define PI 3.1415
 	float angle;
@@ -72,9 +72,7 @@ void circle_wire(int x, int y, int r)
 	}
 	glEnd();
 }
-
-void print(int x, int y, char *string, void *font )
-{
+void print(int x, int y, char *string, void *font ){
 	int len, i ;
 
 	glRasterPos2f( x, y );
@@ -84,11 +82,8 @@ void print(int x, int y, char *string, void *font )
 		glutBitmapCharacter( font, string[i]);
 	}
 }
-
-
 // display text with variables.
-void vprint(int x, int y, void *font, char *string , ...)
-{
+void vprint(int x, int y, void *font, char *string , ...){
 	va_list ap;
 	va_start ( ap, string );
 	char str[1024] ;
@@ -103,7 +98,6 @@ void vprint(int x, int y, void *font, char *string , ...)
 		glutBitmapCharacter( font, str[i]);
 	}
 }
-
 void vprint2(int x, int y, float size, char *string, ...) {
 	va_list ap;
 	va_start(ap, string);
@@ -123,6 +117,7 @@ void vprint2(int x, int y, float size, char *string, ...) {
 	glPopMatrix();
 }
 
+
 //My functions
 void display_load(){
 	
@@ -132,8 +127,9 @@ void display_load(){
 	strcpy(str, ".");
 	for(int i = 0; i < dotCount; i++)
 		vprint2(80 + i * 20, - 50,0.2,str); //Increase dot's
+		
+	for(int i = 0;i  < 1000000; i++) {}
 }
-
 void display_menu(){
 	glColor3f(1,0,1);
 	
@@ -171,7 +167,6 @@ void display_menu(){
 	
 	
 }
-
 void drawGridLines(){
 	glColor3ub(125,125,90);
 	glLineWidth(3);
@@ -261,7 +256,6 @@ void display()
 	glClear( GL_COLOR_BUFFER_BIT );
 	
 	
-
 	switch (gameState) {
 		case LOAD: display_load(); break;
 		case MENU: display_menu(); break;
@@ -332,6 +326,7 @@ void onSpecialKeyDown( int key, int x, int y )
 	   }
 	}
 	
+	//Restart the game by resetting all game variables
 	if(gameState == GAMEOVER && key == GLUT_KEY_F5){
 		gameState = MENU;
 		counter = 0;
@@ -455,7 +450,6 @@ void onTimer( int v ) {
 		}
 		
 		//printf("%.2f\n", fps);
-		
 	}
 	
     
