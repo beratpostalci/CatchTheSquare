@@ -12,6 +12,7 @@
 #define  TIMER_PERIOD  timerPeriod // Period for the timer.
 #define  TIMER_ON     1     // 0:disable timer, 1:enable timer
 
+#define PI 3.1415
 #define D2R 0.0174532
 
 /* Global Variables for Template File */
@@ -23,7 +24,6 @@ int  winWidth, winHeight; // current Window width and height
 #define MENU 1
 #define RUN 2
 #define GAMEOVER 3
-
 
 //Global variables
 int gameState = GAMEOVER;
@@ -49,9 +49,8 @@ int windowHeight = WINDOW_HEIGHT;
 //  radius r
 //
 void circle( int x, int y, int r ){
-#define PI 3.1415
 	float angle ;
-    glBegin( GL_POLYGON ) ;
+    	glBegin( GL_POLYGON ) ;
 	for ( int i = 0 ; i < 100 ; i++ )
 	{
 		angle = 2*PI*i/100;
@@ -60,8 +59,6 @@ void circle( int x, int y, int r ){
 	glEnd();
 }
 void circle_wire(int x, int y, int r){
-
-#define PI 3.1415
 	float angle;
 
 	glBegin(GL_LINE_LOOP);
@@ -117,8 +114,6 @@ void vprint2(int x, int y, float size, char *string, ...) {
 	glPopMatrix();
 }
 
-
-//My functions
 void display_load(){
 	
 	strcpy(str, "LOADING");
